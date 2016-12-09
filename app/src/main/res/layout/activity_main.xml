@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tab_bg"
+    android:orientation="vertical"
+    tools:context="com.reazha.svn_test.activity.MainActivity">
+
+    <TextView
+        style="@style/TextView"
+        android:layout_width="match_parent"
+        android:text="@string/ble_list"
+        android:textSize="16sp" />
+
+    <ListView
+        android:id="@+id/list_devices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

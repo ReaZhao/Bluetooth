@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tab_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/LinearLayout"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:text="@string/operation_device"
+            android:textSize="18sp" />
+
+        <View
+            style="@style/View"
+            android:layout_marginBottom="0dp" />
+
+        <LinearLayout style="@style/LinearLayout" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:text="@string/bluetooth_address" />
+
+            <TextView
+                android:id="@+id/buletooth_address"
+                style="@style/TextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LinearLayout" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:text="@string/bluetooth_name" />
+
+            <TextView
+                android:id="@+id/buletooth_name"
+                style="@style/TextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <View style="@style/View" />
+
+        <LinearLayout style="@style/LinearLayout" >
+
+            <TextView
+                style="@style/TextView"
+                android:text="@string/battery_valve" />
+
+            <CheckBox
+                android:id="@+id/battery_value"
+                style="@style/RadioButton"
+                android:layout_width="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_select"
+            style="@style/Button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/select" />
+
+        <Button
+            android:id="@+id/btn_device"
+            style="@style/Button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/device_id_set" />
+
+        <Button
+            android:id="@+id/btn_flow"
+            style="@style/Button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/flow_set" />
+
+        <Button
+            android:id="@+id/btn_server"
+            style="@style/Button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/server_set" />
+
+        <Button
+            android:id="@+id/btn_timing"
+            style="@style/Button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/timing_time" />
+
+        <Button
+            android:id="@+id/btn_interval"
+            style="@style/Button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/rinse_interval" />
+
+        <LinearLayout
+            android:id="@+id/layout_device"
+            style="@style/LinearLayout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" >
+
+            <TextView
+                style="@style/TextView"
+                android:text="@string/device" />
+
+            <EditText
+                android:id="@+id/edit_device_id"
+                style="@style/EditText"
+                android:hint="@string/hint_device_id" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_flow"
+            style="@style/LinearLayout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" >
+
+            <TextView
+                style="@style/TextView"
+                android:text="@string/flow" />
+
+            <EditText
+                android:id="@+id/edit_flow"
+                style="@style/EditText"
+                android:hint="@string/hint_flow"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_server"
+            style="@style/LinearLayout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout style="@style/LinearLayout" >
+
+                <TextView
+                    style="@style/TextView"
+                    android:text="@string/domain" />
+
+                <EditText
+                    android:id="@+id/edit_domain"
+                    style="@style/EditText"
+                    android:hint="@string/hint_domain" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LinearLayout"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    style="@style/TextView"
+                    android:text="@string/path" />
+
+                <EditText
+                    android:id="@+id/edit_path"
+                    style="@style/EditText"
+                    android:hint="@string/hint_path" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_timing"
+            style="@style/LinearLayout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout style="@style/LinearLayout" >
+
+                <TextView
+                    style="@style/TextView"
+                    android:text="@string/timing" />
+
+                <EditText
+                    android:id="@+id/edit_timing"
+                    style="@style/EditText"
+                    android:hint="@string/hint_timing"
+                    android:inputType="datetime" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LinearLayout"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    style="@style/TextView"
+                    android:text="@string/rinse" />
+
+                <EditText
+                    android:id="@+id/edit_timing_rinse"
+                    style="@style/EditText"
+                    android:hint="@string/hint_rinse" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_interval"
+            style="@style/LinearLayout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout style="@style/LinearLayout" >
+
+                <TextView
+                    style="@style/TextView"
+                    android:text="@string/interval" />
+
+                <EditText
+                    android:id="@+id/edit_interval"
+                    style="@style/EditText"
+                    android:hint="@string/hint_interval" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LinearLayout"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    style="@style/TextView"
+                    android:text="@string/rinse" />
+
+                <EditText
+                    android:id="@+id/edit_interval_rinse"
+                    style="@style/EditText"
+                    android:hint="@string/hint_rinse" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_send"
+            style="@style/Button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/send"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/Button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/back" />
+
+        <View
+            style="@style/View"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="10dp" />
+
+        <LinearLayout style="@style/LinearLayout" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_height="30dp"
+                android:gravity="end|center_vertical"
+                android:text="@string/battery_valve_state" />
+
+            <TextView
+                android:id="@+id/text_battery"
+                style="@style/TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/default_text" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LinearLayout" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_height="30dp"
+                android:gravity="end|center_vertical"
+                android:text="@string/device_id" />
+
+            <TextView
+                android:id="@+id/text_device"
+                style="@style/TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/default_text" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LinearLayout" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_height="30dp"
+                android:gravity="end|center_vertical"
+                android:text="@string/flow_state" />
+
+            <TextView
+                android:id="@+id/text_flow"
+                style="@style/TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/default_text" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LinearLayout" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_height="30dp"
+                android:gravity="end|center_vertical"
+                android:text="@string/leak_water_state" />
+
+            <TextView
+                android:id="@+id/text_leak"
+                style="@style/TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/default_text" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LinearLayout" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_height="30dp"
+                android:gravity="end|center_vertical"
+                android:text="@string/server_path" />
+
+            <TextView
+                android:id="@+id/text_server"
+                style="@style/TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/default_text" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LinearLayout" >
+
+            <TextView
+                style="@style/TextView"
+                android:layout_height="30dp"
+                android:gravity="end|center_vertical"
+                android:text="@string/tds_value" />
+
+            <TextView
+                android:id="@+id/text_tds"
+                style="@style/TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/default_text" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
