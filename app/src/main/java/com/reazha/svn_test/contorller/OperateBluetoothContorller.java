@@ -27,6 +27,7 @@ import com.reazha.svn_test.bean.RinseIntervalBean;
 import com.reazha.svn_test.bean.TimingTimeBean;
 import com.reazha.svn_test.util.ConstantUtils;
 import com.reazha.svn_test.util.GsonUtils;
+import com.reazha.svn_test.util.LogUtils;
 import com.reazha.svn_test.util.StringUtils;
 
 import java.util.List;
@@ -160,6 +161,7 @@ public class OperateBluetoothContorller {
                         mActivity.btn_flow.setVisibility(View.GONE);
                         mActivity.btn_server.setVisibility(View.GONE);
                         mActivity.btn_interval.setVisibility(View.GONE);
+                        mActivity.btn_send.setVisibility(View.VISIBLE);
                         // 隐藏其他输入框
                         mActivity.layout_device.setVisibility(View.GONE);
                         mActivity.layout_flow.setVisibility(View.GONE);
@@ -379,14 +381,14 @@ public class OperateBluetoothContorller {
                                 + pack_number);
                         bluetoothGatt
                                 .writeCharacteristic(gattCharacteristic_char6);
-                        System.out.println(msg.length() + ConstantUtils.head1
+                         LogUtils.d(msg.length() + ConstantUtils.head1
                                 + pack_number);
                     } else {
                         gattCharacteristic_char6.setValue(ConstantUtils.head1
                                 + pack_number);
                         bluetoothGatt
                                 .writeCharacteristic(gattCharacteristic_char6);
-                        System.out.println(msg.length() + ConstantUtils.head1
+                         LogUtils.d(msg.length() + ConstantUtils.head1
                                 + pack_number);
                     }
                 }
@@ -429,7 +431,7 @@ public class OperateBluetoothContorller {
         // 仅仅有这一句是不够的
         // bluetoothGatt.setCharacteristicNotification(characteristic, enabled);
         // 需要为指定特征的特定的描述符设置启用才行
-        System.out.println("write descriptor");
+         LogUtils.d("write descriptor");
 
         bluetoothGatt.setCharacteristicNotification(characteristic, true);
         BluetoothGattDescriptor descriptor = characteristic.getDescriptor(UUID
@@ -455,7 +457,7 @@ public class OperateBluetoothContorller {
         public void onConnectionStateChange(BluetoothGatt gatt, int status,
                                             int newState) {
             super.onConnectionStateChange(gatt, status, newState);
-            System.out.println("onConnectionStateChange");
+             LogUtils.d("onConnectionStateChange");
 
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 // 连接成功 因为是异步调用的 所以刷新UI的操作要放在主线程中，当然也可以使用hanlder Eventbus等 随便
@@ -500,7 +502,7 @@ public class OperateBluetoothContorller {
 			 * 对象，我们可以通过适当的UUID从BluetoothGattCharacteristic 对象中获得：
 			 * 描述符，对Characteristic的描述，包括范围、计量单位等
 			 */
-            System.out.println("onServicesDiscovered");
+             LogUtils.d("onServicesDiscovered");
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 List<BluetoothGattService> services = gatt.getServices();
                 for (BluetoothGattService bluetoothGattService : services) {
@@ -554,11 +556,11 @@ public class OperateBluetoothContorller {
                                          BluetoothGattCharacteristic characteristic, int status) {
             super.onCharacteristicRead(gatt, characteristic, status);
             // 读取到的数据存在characteristic当中，可以通过characteristic.getValue();函数取出。然后再进行解析操作。
-            System.out.println("onCharacteristicRead");
+             LogUtils.d("onCharacteristicRead");
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 final byte[] data = characteristic.getValue();
                 // 和通知一样也是通过字节码的形式传递数据 这里省略不写
-                System.out.println("onCharacteristicRead" + new String(data));
+                 LogUtils.d("onCharacteristicRead" + new String(data));
             }
 
         }
@@ -593,11 +595,11 @@ public class OperateBluetoothContorller {
         public void onCharacteristicChanged(BluetoothGatt gatt,
                                             BluetoothGattCharacteristic characteristic) {
             super.onCharacteristicChanged(gatt, characteristic);
-            System.out.println("onCharacteristicChanged");
+             LogUtils.d("onCharacteristicChanged");
             // 以字节码数组的形式接收到数据
             final byte[] data = characteristic.getValue();
             if (data != null && data.length > 0) {
-                System.out.println("result = " + new String(data));
+               LogUtils.d("result = " + new String(data));
                 is_send = new String(data);
                 mActivity.runOnUiThread(new Runnable() {
 
@@ -671,7 +673,7 @@ public class OperateBluetoothContorller {
                                                             .getPackNumber(i),
                                                     "");
                                         }
-                                        System.out.println("result=" + result);
+                                         LogUtils.d("result=" + result);
                                         if (result.contains("TimingTime")) {
                                             TimingTimeBean bean=GsonUtils.getPerson(
                                                     result, TimingTimeBean.class);
@@ -701,7 +703,7 @@ public class OperateBluetoothContorller {
                                                         .getFlowH()) * 10000)
                                                         + Integer.valueOf(bean
                                                         .getFlowL());
-                                                System.out.println("flow=" + flow);
+                                                 LogUtils.d("flow=" + flow);
                                                 mActivity.text_flow.setText(String
                                                         .valueOf((flow / 1100)));
 
@@ -748,7 +750,7 @@ public class OperateBluetoothContorller {
                                                         .getFlowH()) * 10000)
                                                         + Integer.valueOf(bean
                                                         .getFlowL());
-                                                System.out.println("flow=" + flow);
+                                                 LogUtils.d("flow=" + flow);
                                                 mActivity.text_flow.setText(String
                                                         .valueOf((flow / 1100)));
 
@@ -788,7 +790,7 @@ public class OperateBluetoothContorller {
                                             + pack[(pack_index - 1)]);
                                     bluetoothGatt
                                             .writeCharacteristic(gattCharacteristic_char6);
-                                    System.out.println("send_context="
+                                     LogUtils.d("send_context="
                                             + ConstantUtils.head
                                             + StringUtils
                                             .getPackNumber(pack_index)
@@ -818,7 +820,7 @@ public class OperateBluetoothContorller {
         public void onDescriptorRead(BluetoothGatt gatt,
                                      BluetoothGattDescriptor descriptor, int status) {
             super.onDescriptorRead(gatt, descriptor, status);
-            System.out.println("onDescriptorRead");
+             LogUtils.d("onDescriptorRead");
         }
 
         /**
@@ -832,7 +834,7 @@ public class OperateBluetoothContorller {
         public void onDescriptorWrite(BluetoothGatt gatt,
                                       BluetoothGattDescriptor descriptor, int status) {
             super.onDescriptorWrite(gatt, descriptor, status);
-            System.out.println("onDescriptorWrite");
+             LogUtils.d("onDescriptorWrite");
         }
 
         /**
@@ -844,21 +846,21 @@ public class OperateBluetoothContorller {
         @Override
         public void onReliableWriteCompleted(BluetoothGatt gatt, int status) {
             super.onReliableWriteCompleted(gatt, status);
-            System.out.println("onReliableWriteCompleted");
+             LogUtils.d("onReliableWriteCompleted");
         }
 
         @Override
         public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status) {
             super.onReadRemoteRssi(gatt, rssi, status);
-            System.out.println("onReadRemoteRssi");
+             LogUtils.d("onReadRemoteRssi");
         }
 
         @Override
         public void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
             super.onMtuChanged(gatt, mtu, status);
-            System.out.println("onMtuChanged");
+             LogUtils.d("onMtuChanged");
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                System.out.println("onMtuChanged=" + mtu);
+                 LogUtils.d("onMtuChanged=" + mtu);
             }
         }
 

@@ -21,7 +21,7 @@ public class ViewHolder {
 
     public <T extends View> T getView(int resId) {
         View v = views.get(resId);
-        if (null != v) {
+        if (null == v) {
             v = view.findViewById(resId);
             views.put(resId, v);
         }

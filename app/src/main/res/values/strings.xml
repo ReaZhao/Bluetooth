@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SVN_Test</string>
+    <string name="app_name">蓝牙BEL</string>
     <string name="ble_not_supported">你的手机不支持BLE</string>
     <string name="error_bluetooth_not_supported">你的手机不支持蓝牙</string>
     <string name="back">返回</string>
